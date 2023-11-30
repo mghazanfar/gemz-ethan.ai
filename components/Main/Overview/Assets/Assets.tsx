@@ -1,6 +1,6 @@
 import React from "react";
-import { Text } from "@gluestack-ui/themed";
+import { AssetsTabs } from './common/assetsTabs'
 
 export default function Assets() {
-  return <Text>Family investments</Text>;
+  return <AssetsTabs />;
 }

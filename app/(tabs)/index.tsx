@@ -17,23 +17,23 @@ import Colors from "../../constants/Colors";
 import { AuthContext } from "../../context/AuthProvider";
 
 export default function index() {
-  const { getTokenFromSecureStore } = useContext(AuthContext);
+  // const { getTokenFromSecureStore } = useContext(AuthContext);
 
-  const initializeAuthState = async () => {
-    // Retrieve the access token from SecureStore
-    const accessToken = await getTokenFromSecureStore("accessToken");
-    // If there is a stored access token, set the authentication state
-    if (!accessToken) {
-      router.replace("/(auth)/Onboarding");
-    }
-  };
-  useEffect(() => {
-    // Initialize the authentication state
-    initializeAuthState();
-  }, []);
+  // const initializeAuthState = async () => {
+  //   // Retrieve the access token from SecureStore
+  //   const accessToken = await getTokenFromSecureStore("accessToken");
+  //   // If there is a stored access token, set the authentication state
+  //   if (!accessToken) {
+  //     router.replace("/(auth)/Onboarding");
+  //   }
+  // };
+  // useEffect(() => {
+  //   // Initialize the authentication state
+  //   initializeAuthState();
+  // }, []);
 
   return (
-    <View bg="#fff" height="100%">
+    <View bg="#fff0f0" height="100%">
       <ScrollView>
         <VStack space="2xl" mt="$10" py="$5" px="$3">
           <HStack>

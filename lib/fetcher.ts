@@ -74,7 +74,7 @@ export function postJsonFetcher(baseURL: string) {
         headers: {
           "Content-Type": "application/json",
         },
-        body ,
+        body,
       },
       error: "An error occurred while posting the data.",
     });

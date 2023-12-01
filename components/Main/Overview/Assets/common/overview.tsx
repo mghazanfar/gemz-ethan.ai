@@ -4,8 +4,7 @@ import { AssetsPieChart } from "./assetsPieChart";
 import { boxElevation } from "./utils";
 import { AssetCard } from "./assetCard";
 import { useAssetsMutation } from "../../../../../hooks/useAssets";
-import { Text } from "@gluestack-ui/themed";
-import { ActivityIndicator } from "react-native";
+import { Loading } from "./loading";
 
 export const Overview = () => {
   const { trigger, isMutating, data } = useAssetsMutation<any, any>(
@@ -40,10 +39,7 @@ export const Overview = () => {
   return (
     <Box>
       {isMutating ? (
-        <Box alignItems="center" height={400} flex={1} justifyContent="center">
-          <Text>We're fetching your data...</Text>
-          <ActivityIndicator />
-        </Box>
+        <Loading />
       ) : (
         <>
           <Box

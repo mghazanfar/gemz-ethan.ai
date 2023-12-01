@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { HStack, Pressable, Text, Box } from "@gluestack-ui/themed";
 import { Overview } from "./overview";
+import { Stocks } from "./stocks";
 
 function List(type: number): React.ReactNode {
   switch (type) {
     case 1:
       return <Overview />;
     case 2:
-      return <Text>Stocks render</Text>;
+      return <Stocks />;
     default:
       return null;
   }

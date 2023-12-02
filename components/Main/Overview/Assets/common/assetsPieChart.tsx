@@ -1,23 +1,22 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import {
-  VictoryPie,
-  VictoryChart,
-  VictoryAxis,
-  VictoryLabel,
-} from "victory-native";
 import { Box, Text } from "@gluestack-ui/themed";
+
+import {
+  VictoryAxis,
+  VictoryChart,
+  VictoryLabel,
+  VictoryPie,
+} from "victory-native";
 
 const colors = ["#004793", "#006CDB", "#7ABAFA", "#C9E3FC"];
 
 export const AssetsPieChart = ({ data, total }: any) => {
   const pieData = data.map((item: any, index: number) => ({
-    x: `${parseInt(
-      (((Math.abs(item!.value as any) / total) as any) * 100) as any
-    )}%`,
-    y: Math.abs(item!.value),
+    x: `${parseInt((((Math.abs(item.value) / total) as any) * 100) as any)}%`,
+    y: Math.abs(item.value),
     color: colors[index],
-    text: item!.type,
+    text: item.type,
   }));
   return (
     <Box style={styles.container}>
@@ -63,7 +62,12 @@ export const AssetsPieChart = ({ data, total }: any) => {
         justifyContent="space-between"
       >
         {pieData.map((unit: any) => (
-          <Box flexDirection="row" alignItems="center" width="46%">
+          <Box
+            flexDirection="row"
+            alignItems="center"
+            width="46%"
+            key={unit.color}
+          >
             <Box
               width={15}
               height={15}
@@ -88,8 +92,8 @@ export const AssetsPieChart = ({ data, total }: any) => {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "flex-start",
     alignItems: "center",
+    justifyContent: "flex-start",
     top: -43,
   },
 });

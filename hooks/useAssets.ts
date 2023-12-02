@@ -1,8 +1,9 @@
 import { AssetsUrl } from "../constants/strings";
 import { postJsonFetcher } from "../lib/fetcher";
 
-import  { type SWRMutationConfiguration } from "swr/mutation";
 import useMutation from "./useMutation";
+
+import  { type SWRMutationConfiguration } from "swr/mutation";
 
 export function useAssetsMutation<ExtraArgs, Data>(
   key: string,

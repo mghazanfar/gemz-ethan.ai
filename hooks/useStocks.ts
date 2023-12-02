@@ -1,8 +1,9 @@
 import { AssetsUrl } from "../constants/strings";
 import { getFetcher } from "../lib/fetcher";
 
-import  { type SWRMutationConfiguration } from "swr/mutation";
 import useMutation from "./useMutation";
+
+import  { type SWRMutationConfiguration } from "swr/mutation";
 
 export function useStocksMutation<ExtraArgs, Data>(
   key: string,

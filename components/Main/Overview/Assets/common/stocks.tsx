@@ -1,9 +1,11 @@
+import React, { useEffect } from "react";
 import { Box, Text } from "@gluestack-ui/themed";
-import { boxElevation } from "./utils";
+
 import { useStocksMutation } from "../../../../../hooks/useStocks";
-import { useEffect } from "react";
+
 import { Loading } from "./loading";
 import { StockCard } from "./stockCard";
+import { boxElevation } from "./utils";
 
 export const Stocks = () => {
   const { trigger, isMutating, data } = useStocksMutation<any, any>(
@@ -109,6 +111,7 @@ export const Stocks = () => {
             currentValue={parseFloat(current_value).toFixed(2)}
             returns={daily_returns}
             currency={currency}
+            key={cost_value}
           />
         )
       )}

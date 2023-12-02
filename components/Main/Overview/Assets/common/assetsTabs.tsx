@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { HStack, Pressable, Text, Box } from "@gluestack-ui/themed";
+import { Box,HStack, Pressable, Text } from "@gluestack-ui/themed";
+
 import { Overview } from "./overview";
 import { Stocks } from "./stocks";
 

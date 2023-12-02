@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { Box } from "@gluestack-ui/themed";
-import { AssetsPieChart } from "./assetsPieChart";
-import { boxElevation } from "./utils";
-import { AssetCard } from "./assetCard";
+
 import { useAssetsMutation } from "../../../../../hooks/useAssets";
+
+import { AssetCard } from "./assetCard";
+import { AssetsPieChart } from "./assetsPieChart";
 import { Loading } from "./loading";
+import { boxElevation } from "./utils";
 
 export const Overview = () => {
   const { trigger, isMutating, data } = useAssetsMutation<any, any>(
@@ -29,12 +31,11 @@ export const Overview = () => {
   }, []);
 
   const calculateTotal = (total: any, num: any) => {
-    return Math.abs(total!.value ? total!.value : total) + Math.abs(num!.value);
+    return Math.abs(total.value ? total.value : total) + Math.abs(num.value);
   };
 
   const dataToVisualize = data ? data[0]!.data : [{}];
-  const totalAmount =
-    dataToVisualize && dataToVisualize!.reduce(calculateTotal);
+  const totalAmount = dataToVisualize?.reduce(calculateTotal);
 
   return (
     <Box>
@@ -55,9 +56,10 @@ export const Overview = () => {
           {dataToVisualize.map((item: any) => (
             <AssetCard
               mb={16}
-              title={item!.type}
-              value={parseInt(Math.abs(item!.value as any) as any, 10)}
+              title={item.type}
+              value={parseInt(Math.abs(item.value) as any, 10)}
               total={totalAmount}
+              key={item.value}
             />
           ))}
         </>

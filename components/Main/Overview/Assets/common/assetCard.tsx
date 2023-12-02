@@ -1,12 +1,13 @@
 import React from "react";
+import { Box,Text } from "@gluestack-ui/themed";
 
-import { Text, Box } from "@gluestack-ui/themed";
 import { boxElevation } from "./utils";
+
 import {
-  VictoryPie,
-  VictoryChart,
   VictoryAxis,
+  VictoryChart,
   VictoryLabel,
+  VictoryPie,
 } from "victory-native";
 
 export const AssetCard = ({ mb, title, value, total }: any) => {

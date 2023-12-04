@@ -21,7 +21,7 @@ export const AssetsPieChart = ({ data, total }: any) => {
     text: item.type,
   }));
   const xForChart = windowWidth / 2 + windowWidth * 0.1 - 36;
-  console.log("xForChart", xForChart);
+  
   return (
     <Box style={styles.container}>
       <VictoryChart height={400}>

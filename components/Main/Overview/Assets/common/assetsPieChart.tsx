@@ -1,7 +1,6 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { Dimensions,StyleSheet  } from "react-native";
 import { Box, Text } from "@gluestack-ui/themed";
-import { Dimensions } from "react-native";
 
 import {
   VictoryAxis,

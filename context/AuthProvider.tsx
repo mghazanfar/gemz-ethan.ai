@@ -28,6 +28,7 @@ const AuthProvider = ({ children }: any) => {
     accessToken: null,
     refreshToken: null,
     authenticated: false,
+    client_id: null,
   });
 
   // Function to save a token to SecureStore
@@ -101,6 +102,7 @@ const AuthProvider = ({ children }: any) => {
       accessToken: null,
       refreshToken: null,
       authenticated: false,
+      client_id: null,
     });
     // Clear tokens from SecureStore upon logout
     saveTokenToSecureStore("accessToken", "");
@@ -220,6 +222,7 @@ const AuthProvider = ({ children }: any) => {
       value={{
         authState,
         getAccessToken: () => authState.accessToken,
+        getClientId: () => authState.client_id,
         setAuthState,
         logout,
         saveTokenToSecureStore,

@@ -1,8 +1,8 @@
 import { useContext } from "react";
 
-import { TransactionServerUrl } from "../constants/strings";
+import { AnalyticsServerUrl, TransactionServerUrl } from "../constants/strings";
 import { AuthContext } from "../context/AuthProvider";
-import { getFetcher } from "../lib/fetcher";
+import { getFetcher, postJsonFetcher } from "../lib/fetcher";
 
 import useSWR, { type SWRConfiguration } from "swr";
 
@@ -39,4 +39,16 @@ export function useTransactionServerQuery<Data>(
   config?: SWRConfiguration<Data, Error>,
 ) {
   return useQuery<Data>(key, getFetcher(TransactionServerUrl), config);
+}
+type SearchParams = "start_date" | "end_date" | "client_id";
+export function useAnalyticsServerQuery<Data>(
+  key: string | null,
+  args: Partial<Record<SearchParams, string>>,
+  config?: SWRConfiguration<Data, Error>,
+) {
+  return useQuery<Data>(
+    key ? [key, args] : null,
+    postJsonFetcher(AnalyticsServerUrl),
+    config,
+  );
 }

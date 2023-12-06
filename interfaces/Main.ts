@@ -1,3 +1,8 @@
+export interface ICustodian {
+  id: string;
+  name: string;
+}
+export type TGainerLoser = "gainer" | "loser";
 export type TTabType =
   | "Overview"
   | "Family"

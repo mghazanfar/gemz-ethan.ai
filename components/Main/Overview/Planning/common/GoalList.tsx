@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FlatList, Spinner } from "@gluestack-ui/themed";
 
+import { AuthContext } from "../../../../../context/AuthProvider";
 import { useTransactionServerQuery } from "../../../../../hooks/useQuery";
 import buildURLSearchParams from "../../../../../lib/buildURLSearchParams";
 
 import GoalCard from "./GoalCard";
-
 const AssetClassMap = {
   equity: "Equity",
   fixed_income: "Fixed Income",
@@ -19,7 +19,7 @@ const ReturnExpectationsMap = {
   low: "Low",
 };
 
-type TAssetClassType = keyof typeof AssetClassMap;
+type TAssetClassType = keyof typeof AssetClassMap | undefined;
 
 export interface IGoals {
   id: string;
@@ -28,14 +28,14 @@ export interface IGoals {
   holding_period: string;
   investment_horizon: string;
   liquidity_needs: string;
-  return_expectations: keyof typeof ReturnExpectationsMap;
+  return_expectations: keyof typeof ReturnExpectationsMap | undefined;
 }
 
 export default function GoalList() {
-  const client_id = "637fbb50-d59d-467d-b61d-f99aa897b960";
+  const { getClientId } = useContext(AuthContext);
+  const client_id = getClientId();
   const url = `/goals/${buildURLSearchParams({ client_id })}`;
   const { data, isLoading } = useTransactionServerQuery<IGoals[]>(url);
-  console.log("Goal Data", data);
   if (isLoading) {
     return <Spinner size="small" />;
   }

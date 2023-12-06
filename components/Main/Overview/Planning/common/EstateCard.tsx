@@ -12,6 +12,12 @@ import { type IEstate } from "./EstateList";
 import { Edit, Trash } from "lucide-react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
+const BenificiaryMap = {
+  nominee: "Nominee",
+  beneficiary_person: "Beneficiary Person",
+  beneficiary_trust: "Beneficiary Trust",
+};
+
 interface IEstateCardProps {
   data: IEstate;
 }
@@ -36,8 +42,16 @@ function useEstateDelete(id: string) {
 }
 
 export default function EstateCard({ data }: IEstateCardProps) {
-  const { id, name, relationship, email, date_of_birth, phone, percent_share } =
-    data;
+  const {
+    id,
+    name,
+    relationship,
+    email,
+    date_of_birth,
+    phone,
+    percent_share,
+    type,
+  } = data;
   const { trigger: deleteEstate } = useEstateDelete(id);
   const handleEdit = (id: string) => {
     router.push(`/AddEstateModal${buildURLSearchParams({ id })}`);
@@ -59,7 +73,7 @@ export default function EstateCard({ data }: IEstateCardProps) {
   return (
     <VStack style={styles.card}>
       <HStack style={styles.headerContainer}>
-        <Text style={styles.headerText}>Beneficiary Person - Villa</Text>
+        <Text style={styles.headerText}>{BenificiaryMap[type]}</Text>
         <HStack style={styles.iconContainer}>
           <TouchableOpacity
             onPress={() => {

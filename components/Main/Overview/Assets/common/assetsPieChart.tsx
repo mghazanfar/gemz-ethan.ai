@@ -1,5 +1,5 @@
 import React from "react";
-import { Dimensions,StyleSheet  } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 import { Box, Text } from "@gluestack-ui/themed";
 
 import {
@@ -20,7 +20,8 @@ export const AssetsPieChart = ({ data, total }: any) => {
     text: item.type,
   }));
   const xForChart = windowWidth / 2 + windowWidth * 0.1 - 36;
-  
+  const pieSlideThickness = 80;
+
   return (
     <Box style={styles.container}>
       <VictoryChart height={400}>
@@ -33,9 +34,11 @@ export const AssetsPieChart = ({ data, total }: any) => {
         />
         <VictoryPie
           padAngle={2}
-          innerRadius={80}
+          innerRadius={pieSlideThickness}
           data={pieData}
-          labelRadius={({ innerRadius }: any) => innerRadius + 30}
+          labelRadius={({ innerRadius: pieSlideThicknessDerived }: any) =>
+            pieSlideThicknessDerived + windowWidth * 0.06
+          }
           cornerRadius={6}
           colorScale={pieData.map((unit: any) => unit.color)}
           style={{
